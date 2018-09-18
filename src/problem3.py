@@ -2,7 +2,7 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
+         Amanda Stouder, their colleagues and Meghna Allamudi.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -87,6 +87,42 @@ def problem3(point, length, delta, window):
       :type delta:   int
       :type window:  rg.RoseWindow
     """
+    end = rg.Point(point.x,point.y+length)
+    line = rg.Line(point,end)
+    line.thickness = 3
+    line.color = 'black'
+    line.attach_to(window)
+    window.render()
+
+    end1 = rg.Point(point.x+length,point.y)
+    horizontal_line = rg.Line(point,end1)
+    horizontal_line.thickness = 3
+    horizontal_line.attach_to(window)
+    window.render()
+
+    for k in range((length//delta)+1):
+        start = rg.Point(point.x,point.y+(delta*k))
+        end = rg.Point(point.x+length+(20*k),point.y+(delta*k))
+        line1 = rg.Line(start,end)
+        line1.thickness = 3
+        if k % 3==0:
+            line1.color = 'magenta'
+        if k==1:
+            line1.color = 'cyan'
+        if k==4:
+            line1.color = 'cyan'
+        if k==7:
+            line1.color = 'cyan'
+        if k==2:
+            line1.color = 'spring green'
+        if k==5:
+            line1.color = 'spring green'
+        if k==8:
+            line1.color = 'spring green'
+        line1.attach_to(window)
+    window.render()
+
+
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     # TODO (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:

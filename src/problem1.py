@@ -2,7 +2,7 @@
 Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
+         Amanda Stouder, their colleagues and Meghna Allamudi.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -88,6 +88,24 @@ def problem1a(rectangle, square, thickness, window):
       :type thickness: int
       :type window:    rg.RoseWindow
     """
+    rectangle.attach_to(window)
+    square.attach_to(window)
+    window.render()
+
+    x = square.center.x
+    y = square.center.y
+    start_point = rg.Point(x,y)
+    dx = (rectangle.get_upper_left_corner().x - rectangle.get_upper_right_corner().x)//2
+    x1 = rectangle.get_upper_left_corner().x - dx
+    y1 = rectangle.get_upper_left_corner().y
+    end_point = rg.Point(x1,y1)
+    line = rg.Line(start_point,end_point)
+    line.thickness = thickness
+    line.color = rectangle.outline_color
+    line.attach_to(window)
+    window.render()
+
+
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
@@ -137,7 +155,7 @@ def problem1b(point, win, width, height, color):
       Draws an rg.Ellipse for which:
         -- The topmost point of the rg.Ellipse is the given rg.Point.
         -- The width of the rg.Ellipse is the given width.
-        -- The height of the rg.Ellipse is the given width.
+        -- The height of the rg.Ellipse is the given height.
         -- The fill color of the rg.Ellipse is the given color.
       Must render but   ** NOT close **   the window.
 
@@ -148,6 +166,11 @@ def problem1b(point, win, width, height, color):
       :type height: int
       :type color:  str
     """
+    point2 = rg.Point(point.x+(width),point.y+(height))
+    ellipse = rg.Ellipse(point,point2)
+    ellipse.fill_color = color
+    ellipse.attach_to(win)
+    win.render()
     # --------------------------------------------------------------------------
     # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).

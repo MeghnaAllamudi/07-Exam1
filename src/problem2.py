@@ -2,7 +2,7 @@
 Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
+         Amanda Stouder, their colleagues and Meghna Allamudi.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import testing_helper
@@ -45,6 +45,30 @@ def problem2a_testing():
     print('Testing the   sum_of_digits_of_sum_of_factors   function:')
     print('---------------------------------------------------------')
 
+    # Test 1:
+    expected = 11
+    answer = sum_of_digits_of_sum_of_factors(28)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 2:
+    expected = 4
+    answer = sum_of_digits_of_sum_of_factors(3)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 6
+    answer = sum_of_digits_of_sum_of_factors(5)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 9
+    answer = sum_of_digits_of_sum_of_factors(10)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
 
 def sum_of_digits_of_sum_of_factors(n):
     """
@@ -70,6 +94,7 @@ def sum_of_digits_of_sum_of_factors(n):
 
 
 ################################################################################
+# DONE
 # TODO: 3.  READ the green doc-string for the   number_of_factors   function
 #    defined below.  You do NOT need to understand its implementation,
 #    just its specification (per the doc-string).
@@ -309,6 +334,12 @@ def problem2b(a, b, x):
          is great than or equal to 5 are: 16, 18, 20, and 24,
          and the sum   16 + 18 + 20 + 24   is 78.
      """
+    total = 0
+    for k in range(a,b+1):
+        tf = number_of_factors(k)
+        if tf >= x:
+            total = total + k
+    return total
     ############################################################################
     # TODO: 4. Implement and test this function.  See the IMPORTANT NOTE below!
     #          Tests have been written for you (above).
@@ -432,6 +463,11 @@ def problem1c(m):
              11 13 17 19,
            and 11 + 13 + 17 + 19 = 60.
      """
+    total = 0
+    for k in range(m,m+10):
+        if number_of_factors(k) == 2:
+            total = total + k
+    return total
     ############################################################################
     # TODO: 4. Implement and test this function.  See the IMPORTANT NOTE below!
     #          Tests have been written for you (above).
